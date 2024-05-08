@@ -32,10 +32,18 @@ const server = http.createServer((req, res) => {
     if (url === '/') {
         res.write('<html>');
         res.write('<head><title>Enter Message</title></head>');
-        res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button>/form></body>');
+        res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>');
         res.write('</html>');
-        res.end();
+        return res.end();
     }
+
+    res.setHeader('Content-Type', 'text/html');
+    res.write('<html>');
+    res.write('<head><title>My First Page</title></head>');
+    let lang = 'Node.js';
+    res.write(`<body><h1>Hello from my ${lang} Server!</h1></body>`);
+    res.write('</html>');
+    res.end();
 });
 
 // listen은 Node.js가 스크립트를 바로 종료하지 않고 계속 실행되면서 '듣도록' 하는 역할
