@@ -32,4 +32,7 @@ const routes = require('./routes');
 const server = http.createServer(routes.handler);
 
 // listen은 Node.js가 스크립트를 바로 종료하지 않고 계속 실행되면서 '듣도록' 하는 역할
-server.listen(3001);
+// server.listen(3001);
+server.listen(3001, 'localhost', () => {
+    console.log(`>> Web Server Start : http://${'localhost'}:${3001}/ 번 포트에서 대기 중`);
+});
